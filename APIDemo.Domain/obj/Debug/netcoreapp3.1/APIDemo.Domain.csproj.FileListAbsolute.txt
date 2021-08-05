@@ -1,0 +1,8 @@
+C:\Proyecto\Api\APIDemo\APIDemo.Domain\bin\Debug\netcoreapp3.1\APIDemo.Domain.deps.json
+C:\Proyecto\Api\APIDemo\APIDemo.Domain\bin\Debug\netcoreapp3.1\APIDemo.Domain.dll
+C:\Proyecto\Api\APIDemo\APIDemo.Domain\bin\Debug\netcoreapp3.1\APIDemo.Domain.pdb
+C:\Proyecto\Api\APIDemo\APIDemo.Domain\obj\Debug\netcoreapp3.1\APIDemo.Domain.AssemblyInfoInputs.cache
+C:\Proyecto\Api\APIDemo\APIDemo.Domain\obj\Debug\netcoreapp3.1\APIDemo.Domain.AssemblyInfo.cs
+C:\Proyecto\Api\APIDemo\APIDemo.Domain\obj\Debug\netcoreapp3.1\APIDemo.Domain.csproj.CoreCompileInputs.cache
+C:\Proyecto\Api\APIDemo\APIDemo.Domain\obj\Debug\netcoreapp3.1\APIDemo.Domain.dll
+C:\Proyecto\Api\APIDemo\APIDemo.Domain\obj\Debug\netcoreapp3.1\APIDemo.Domain.pdb

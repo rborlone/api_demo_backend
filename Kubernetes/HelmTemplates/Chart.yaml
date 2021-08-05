@@ -1,0 +1,4 @@
+apiVersion: v1
+description: Template Helm de Kubernetes
+name: apidemo
+version: v0.2.0

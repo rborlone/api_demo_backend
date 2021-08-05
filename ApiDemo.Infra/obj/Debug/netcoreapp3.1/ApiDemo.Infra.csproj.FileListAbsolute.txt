@@ -1,0 +1,15 @@
+C:\Proyecto\Api\APIDemo\ApiDemo.Infra\obj\Debug\netcoreapp3.1\ApiDemo.Infra.csprojAssemblyReference.cache
+C:\Proyecto\Api\APIDemo\ApiDemo.Infra\obj\Debug\netcoreapp3.1\ApiDemo.Infra.AssemblyInfoInputs.cache
+C:\Proyecto\Api\APIDemo\ApiDemo.Infra\obj\Debug\netcoreapp3.1\ApiDemo.Infra.AssemblyInfo.cs
+C:\Proyecto\Api\APIDemo\ApiDemo.Infra\obj\Debug\netcoreapp3.1\ApiDemo.Infra.csproj.CoreCompileInputs.cache
+C:\Proyecto\Api\APIDemo\ApiDemo.Infra\bin\Debug\netcoreapp3.1\ApiDemo.Infra.deps.json
+C:\Proyecto\Api\APIDemo\ApiDemo.Infra\bin\Debug\netcoreapp3.1\ApiDemo.Infra.dll
+C:\Proyecto\Api\APIDemo\ApiDemo.Infra\bin\Debug\netcoreapp3.1\ApiDemo.Infra.pdb
+C:\Proyecto\Api\APIDemo\ApiDemo.Infra\bin\Debug\netcoreapp3.1\APIDemo.Domain.dll
+C:\Proyecto\Api\APIDemo\ApiDemo.Infra\bin\Debug\netcoreapp3.1\APIDemo.Domain.pdb
+C:\Proyecto\Api\APIDemo\ApiDemo.Infra\obj\Debug\netcoreapp3.1\ApiDemo.Infra.csproj.CopyComplete
+C:\Proyecto\Api\APIDemo\ApiDemo.Infra\obj\Debug\netcoreapp3.1\ApiDemo.Infra.dll
+C:\Proyecto\Api\APIDemo\ApiDemo.Infra\obj\Debug\netcoreapp3.1\ApiDemo.Infra.pdb
+C:\Proyecto\Api\APIDemo\ApiDemo.Infra\bin\Debug\netcoreapp3.1\ApiDemo.Infra.runtimeconfig.json
+C:\Proyecto\Api\APIDemo\ApiDemo.Infra\bin\Debug\netcoreapp3.1\ApiDemo.Infra.runtimeconfig.dev.json
+C:\Proyecto\Api\APIDemo\ApiDemo.Infra\obj\Debug\netcoreapp3.1\ApiDemo.Infra.genruntimeconfig.cache
