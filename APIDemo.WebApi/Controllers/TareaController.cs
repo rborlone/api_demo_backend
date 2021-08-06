@@ -27,6 +27,11 @@ namespace ApiDemo.WebApi.Controllers
             this._tareaService = tareaService;
         }
 
+        /// <summary>
+        /// Metodo para agregar una tarea.
+        /// </summary>
+        /// <param name="tarea"></param>
+        /// <returns></returns>
         [Authorize]
         [HttpPost]
         [Route(ApiRoutes.Tarea.AgregarTarea)]
@@ -43,7 +48,11 @@ namespace ApiDemo.WebApi.Controllers
 
             try
             {
-                objResultado.Resultado = this._tareaService.AgregarTarea(tarea);
+                int idUsuario = 0;
+
+                int.TryParse(HttpContext.Items["idUsuario"].ToString(), out idUsuario);
+
+                objResultado.Resultado = await this._tareaService.AgregarTareaAsync(tarea, idUsuario);
             }
             catch (ApiDemoDomainException ex)
             {
@@ -73,6 +82,11 @@ namespace ApiDemo.WebApi.Controllers
             return StatusCode(_codeStatus, objResultado);
         }
 
+        /// <summary>
+        /// Metodo para eliminar una tarea.
+        /// </summary>
+        /// <param name="idTarea"></param>
+        /// <returns></returns>
         [Authorize]
         [HttpDelete]
         [Route(ApiRoutes.Tarea.EliminarTarea)]
@@ -89,7 +103,11 @@ namespace ApiDemo.WebApi.Controllers
 
             try
             {
-                objResultado.Resultado = this._tareaService.EliminarTarea(idTarea);
+                int idUsuario = 0;
+
+                int.TryParse(HttpContext.Items["idUsuario"].ToString(), out idUsuario);
+
+                objResultado.Resultado = await this._tareaService.EliminarTareaAsync(idTarea, idUsuario);
             }
             catch (ApiDemoDomainException ex)
             {
@@ -119,6 +137,12 @@ namespace ApiDemo.WebApi.Controllers
             return StatusCode(_codeStatus, objResultado);
         }
 
+        /// <summary>
+        /// Metodo para modificar una tarea.
+        /// </summary>
+        /// <param name="idTarea"></param>
+        /// <param name="estadoTarea"></param>
+        /// <returns></returns>
         [Authorize]
         [HttpPut]
         [Route(ApiRoutes.Tarea.ModificarTarea)]
@@ -135,7 +159,11 @@ namespace ApiDemo.WebApi.Controllers
 
             try
             {
-                objResultado.Resultado = this._tareaService.CambiarEstado(idTarea, estadoTarea);
+                int idUsuario = 0;
+
+                int.TryParse(HttpContext.Items["idUsuario"].ToString(), out idUsuario);
+
+                objResultado.Resultado = await this._tareaService.CambiarEstadoAsync(idTarea, estadoTarea, idUsuario);
             }
             catch (ApiDemoDomainException ex)
             {
@@ -165,6 +193,114 @@ namespace ApiDemo.WebApi.Controllers
             return StatusCode(_codeStatus, objResultado);
         }
 
+        /// <summary>
+        /// Metodo para listar tareas.
+        /// </summary>
+        /// <returns></returns>
+        [Authorize]
+        [HttpGet]
+        [Route(ApiRoutes.Tarea.ListarTarea)]
+        public async Task<IActionResult> ListarTarea()
+        {
+            int _codeStatus = 200;
+            Respuesta objResultado = new Respuesta
+            {
+                Success = "OK",
+                Trace = Trace.Instance.generaTrace("TareaController", "ListarTarea")
+            };
+
+            _logger.LogInformation("TareaController", "ListarTarea");
+
+            try
+            {
+                int idUsuario = 0;
+
+                int.TryParse(HttpContext.Items["idUsuario"].ToString(), out idUsuario);
+
+                objResultado.Resultado = await this._tareaService.ObtenerListadoTareasAsync(idUsuario);
+            }
+            catch (ApiDemoDomainException ex)
+            {
+                objResultado.Success = "NOK";
+                _codeStatus = 400;
+                _logger.LogWarning(ex, "Error de procesamiento Trace { trace }", objResultado.Trace);
+                Error objerr = new Error
+                {
+                    Codigo = "400",
+                    Descripcion = ex.Message
+                };
+                objResultado.Errores.Add(objerr);
+            }
+            catch (Exception ex)
+            {
+                objResultado.Success = "NOK";
+                _codeStatus = 500;
+                _logger.LogCritical(ex, "Error de procesamiento Trace { trace }", objResultado.Trace);
+                Error objerr = new Error
+                {
+                    Codigo = "500",
+                    Descripcion = "Error de procesamiento."
+                };
+                objResultado.Errores.Add(objerr);
+            }
+
+            return StatusCode(_codeStatus, objResultado);
+        }
+
+        /// <summary>
+        /// Metodo para obtener una tarea segund id.
+        /// </summary>
+        /// <param name="idTarea"></param>
+        /// <returns></returns>
+        [Authorize]
+        [HttpGet]
+        [Route(ApiRoutes.Tarea.ObtenerTarea)]
+        public async Task<IActionResult> ObtenerTarea(int idTarea)
+        {
+            int _codeStatus = 200;
+            Respuesta objResultado = new Respuesta
+            {
+                Success = "OK",
+                Trace = Trace.Instance.generaTrace("TareaController", "ListarTarea")
+            };
+
+            _logger.LogInformation("TareaController", "ListarTarea");
+
+            try
+            {
+                int idUsuario = 0;
+
+                int.TryParse(HttpContext.Items["idUsuario"].ToString(), out idUsuario);
+
+                objResultado.Resultado = await this._tareaService.ObtenerTareaAsync(idTarea, idUsuario);
+            }
+            catch (ApiDemoDomainException ex)
+            {
+                objResultado.Success = "NOK";
+                _codeStatus = 400;
+                _logger.LogWarning(ex, "Error de procesamiento Trace { trace }", objResultado.Trace);
+                Error objerr = new Error
+                {
+                    Codigo = "400",
+                    Descripcion = ex.Message
+                };
+                objResultado.Errores.Add(objerr);
+            }
+            catch (Exception ex)
+            {
+                objResultado.Success = "NOK";
+                _codeStatus = 500;
+                _logger.LogCritical(ex, "Error de procesamiento Trace { trace }", objResultado.Trace);
+                Error objerr = new Error
+                {
+                    Codigo = "500",
+                    Descripcion = "Error de procesamiento."
+                };
+                objResultado.Errores.Add(objerr);
+            }
+
+            return StatusCode(_codeStatus, objResultado);
+        }
 
     }
 }

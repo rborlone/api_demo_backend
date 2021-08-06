@@ -94,6 +94,7 @@ namespace ApiDemo.WebApi
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory factory, ILogger<Startup> logger, DatabaseContext data)
         {
             data.Database.EnsureCreated();
+            data.Database.Migrate();
             
             // el swagger solo se mostrara en ambiente desarrollo.
             if (env.IsDevelopment())

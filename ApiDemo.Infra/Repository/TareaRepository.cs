@@ -113,5 +113,41 @@ namespace ApiDemo.Infra.Repository
                 throw new Exception(ex.Message);
             }
         }
+
+        /// <summary>
+        /// Metodo para obtener una lista de tareas.
+        /// </summary>
+        /// <returns></returns>
+        public IList<Tarea> ObtenerListadoTarea(int idUsuario)
+        {
+            try
+            {
+                var resultado = _dbSet.Where(x=> x.IdUsuario == idUsuario).ToList();
+
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Metodo para obtener una lista de tareas.
+        /// </summary>
+        /// <returns></returns>
+        public Tarea ObtenerTarea(int idTarea)
+        {
+            try
+            {
+                var resultado = _dbSet.Where(x => x.IdTarea == idTarea).SingleOrDefault();
+
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

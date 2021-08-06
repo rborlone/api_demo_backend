@@ -7,6 +7,9 @@ using Microsoft.Extensions.Logging;
 
 namespace GlobalErrorHandling.Extensions
 {
+    /// <summary>
+    /// Clase para trabajar las excepciones del middleware
+    /// </summary>
     public class ExceptionMiddleware
     {
         private readonly RequestDelegate _next;

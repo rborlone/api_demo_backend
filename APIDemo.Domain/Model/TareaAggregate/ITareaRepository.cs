@@ -34,5 +34,18 @@ namespace APIDemo.Domain.Model.TareaAggregate
         /// <param name="idTarea"></param>
         /// <returns></returns>
         IList<Tarea> ObtenerTareasPorUsuario(int idTarea);
+
+        /// <summary>
+        /// Metodo para obtener un listado de tareas.
+        /// </summary>
+        /// <returns></returns>
+        IList<Tarea> ObtenerListadoTarea(int idUsuario);
+
+        /// <summary>
+        /// Metodo para obtener una tarea por id tarea.
+        /// </summary>
+        /// <param name="idTarea"></param>
+        /// <returns></returns>
+        Tarea ObtenerTarea(int idTarea);
     }
 }

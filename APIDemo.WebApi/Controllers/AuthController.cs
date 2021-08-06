@@ -31,6 +31,11 @@ namespace ApiDemo.WebApi.Controllers
             this.usuarioService = usuarioService;
         }
 
+        /// <summary>
+        /// Metodo para loguearse
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route(ApiRoutes.Usuario.Login)]
         public async Task<IActionResult> Login(UsuarioRequest login)
@@ -46,7 +51,7 @@ namespace ApiDemo.WebApi.Controllers
 
             try
             {
-                objResultado.Resultado = this.usuarioService.LoginUsuario(login);
+                objResultado.Resultado = await this.usuarioService.LoginUsuarioAsync(login);
             }
             catch (ApiDemoDomainException ex)
             {
@@ -89,6 +94,11 @@ namespace ApiDemo.WebApi.Controllers
             return StatusCode(_codeStatus, objResultado);
         }
 
+        /// <summary>
+        /// Metodo para registrar un usuario
+        /// </summary>
+        /// <param name="registrarUsuarioRequest"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route(ApiRoutes.Usuario.Registrar)]
         public async Task<IActionResult> Registrar(RegistrarUsuarioRequest registrarUsuarioRequest)
@@ -104,7 +114,7 @@ namespace ApiDemo.WebApi.Controllers
 
             try
             {
-                objResultado.Resultado = this.usuarioService.RegistrarUsuario(registrarUsuarioRequest);
+                objResultado.Resultado = await this.usuarioService.RegistrarUsuarioAsync(registrarUsuarioRequest);
             }
             catch (ApiDemoDomainException ex)
             {
@@ -134,7 +144,10 @@ namespace ApiDemo.WebApi.Controllers
             return StatusCode(_codeStatus, objResultado);
         }
 
-
+        /// <summary>
+        /// Metodo para realizar la renovacion del token en base al actual.
+        /// </summary>
+        /// <returns></returns>
         [Authorize]
         [HttpGet]
         [Route(ApiRoutes.Usuario.Renovar)]
@@ -157,7 +170,7 @@ namespace ApiDemo.WebApi.Controllers
                 int.TryParse(HttpContext.Items["idUsuario"].ToString(), out idUsuario);
 
 
-                objResultado.Resultado = this.usuarioService.RenovarToken(idUsuario);
+                objResultado.Resultado = await this.usuarioService.RenovarTokenAsync(idUsuario);
             }
             catch (ApiDemoDomainException ex)
             {
@@ -200,10 +213,15 @@ namespace ApiDemo.WebApi.Controllers
             return StatusCode(_codeStatus, objResultado);
         }
 
+        /// <summary>
+        /// Metodo para obtener el usuario segun id usuario.
+        /// </summary>
+        /// <param name="idUsuario"></param>
+        /// <returns></returns>
         [Authorize]
         [HttpGet]
         [Route(ApiRoutes.Usuario.ObtenerUsuario)]
-        public async Task<IActionResult> ListarUsuarios(int idUsuario)
+        public async Task<IActionResult> ListarUsuarios()
         {
             int _codeStatus = 200;
             Respuesta objResultado = new Respuesta
@@ -216,7 +234,11 @@ namespace ApiDemo.WebApi.Controllers
 
             try
             {
-                objResultado.Resultado = this.usuarioService.ObtenerUsuario(idUsuario);
+                int idUsuario = 0;
+
+                int.TryParse(HttpContext.Items["idUsuario"].ToString(), out idUsuario);
+
+                objResultado.Resultado = await this.usuarioService.ObtenerUsuarioAsync(idUsuario);
             }
             catch (ApiDemoDomainException ex)
             {

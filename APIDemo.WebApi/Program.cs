@@ -8,6 +8,9 @@ using Microsoft.Extensions.Logging;
 
 namespace ApiDemo.WebApi
 {
+    /// <summary>
+    /// Clase inicial y punto de entrada a la api, genera la configuracion inicial de donde obtener las configuraciones.
+    /// </summary>
     public class Program
     {
         public static IConfiguration Configuration { get; } = new ConfigurationBuilder()
@@ -24,24 +27,26 @@ namespace ApiDemo.WebApi
 
             try
             {
-                Log.Information("Getting the motors running...");
-
                 CreateWebHostBuilder(args).Build().Run();
             }
             catch (Exception ex)
             {
-                Log.Fatal(ex, "Host terminated unexpectedly");
+                Log.Fatal(ex, "Se produjo un error en la aplicacion a nivel general.");
             }
             finally
             {
                 Log.CloseAndFlush();
             }
-
-            //
         }
 
+        /// <summary>
+        /// Generamos el Web Hostbuilder y especificamos en el host la configuracion del application insight la cual quedara registrada en Azure como logs.
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
         public static IWebHostBuilder CreateWebHostBuilder(string[] args)
         {
+
             return WebHost.CreateDefaultBuilder(args)
                                .UseStartup<Startup>()
                                .ConfigureLogging(

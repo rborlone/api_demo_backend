@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 
 namespace GlobalErrorHandling.Extensions
 {
+    //Clase para aplicar los middlewares.
     public static class ExceptionMiddlewareExtensions
     {
         public static void ConfigureExceptionHandler(this IApplicationBuilder app, ILogger logger)

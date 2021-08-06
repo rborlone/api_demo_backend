@@ -38,7 +38,7 @@ namespace APIDemo.Domain.Entity
         /// </summary>
         [JsonIgnore]
         public DateTime FechaModificacion { get; set; }
-
+        [JsonIgnore]
         public int IdUsuario { get; set; }
         [JsonIgnore]
         public Usuario Usuario { get; set; }

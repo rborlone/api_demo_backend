@@ -11,6 +11,9 @@ using Microsoft.Extensions.Configuration;
 
 namespace WebApi.Middleware
 {
+    /// <summary>
+    /// Middleware para la validacion del token antes de enviar el contexto completo a la api.
+    /// </summary>
     public class JwtMiddleware
     {
         private readonly RequestDelegate _next;
@@ -44,19 +47,17 @@ namespace WebApi.Middleware
                     IssuerSigningKey = new SymmetricSecurityKey(key),
                     ValidateIssuer = false,
                     ValidateAudience = false,
-                    // set clockskew to zero so tokens expire exactly at token expiration time (instead of 5 minutes later)
                     ClockSkew = TimeSpan.Zero
                 }, out SecurityToken validatedToken);
 
                 var jwtToken = (JwtSecurityToken)validatedToken;
                 var idUsuario = int.Parse(jwtToken.Claims.First(x => x.Type == "id").Value);
 
-                context.Items["idUsuario"] = idUsuario.ToString(); //aca debemos agregar integracion a la base de datos.
+                context.Items["idUsuario"] = idUsuario.ToString(); //aca podemos agregar integracion a la base de datos.
             }
             catch
             {
-                // do nothing if jwt validation fails
-                // account is not attached to context so request won't have access to secure routes
+
             }
         }
     }

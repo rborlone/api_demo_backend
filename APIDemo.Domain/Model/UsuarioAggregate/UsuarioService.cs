@@ -10,6 +10,7 @@ using APIDemo.Domain.Model.TareaAggregate;
 using APIDemo.Domain.Facade;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using System.Threading.Tasks;
 
 namespace APIDemo.Domain.Model.UsuarioAggregate
 {
@@ -106,6 +107,11 @@ namespace APIDemo.Domain.Model.UsuarioAggregate
             return usuarioResponse;
         }
 
+        /// <summary>
+        /// Metodo para renovar un token
+        /// </summary>
+        /// <param name="idUsuario"></param>
+        /// <returns></returns>
         public UsuarioResponse RenovarToken(int idUsuario)
         {
             var secretKey = _configuration.GetValue<string>("SecretKey");
@@ -181,6 +187,11 @@ namespace APIDemo.Domain.Model.UsuarioAggregate
             return tokenHandler.WriteToken(token);
         }
 
+        /// <summary>
+        /// Metodo para obtener un usuario y sus tareas.
+        /// </summary>
+        /// <param name="idUsuario"></param>
+        /// <returns></returns>
         public UsuarioListadoResponse ObtenerUsuario(int idUsuario)
         {
             var resultado = _repository.ObtenerUsuario(idUsuario);
@@ -212,6 +223,46 @@ namespace APIDemo.Domain.Model.UsuarioAggregate
             };
 
             return respuesta;
+        }
+
+        /// <summary>
+        /// Metodo login para loguear un usuario asincrono.
+        /// </summary>
+        /// <param name="usuario">Recibe el request del usuario.</param>
+        /// <returns></returns>
+        public Task<UsuarioResponse> LoginUsuarioAsync(UsuarioRequest usuario)
+        {
+            return Task.FromResult<UsuarioResponse>(LoginUsuario(usuario));
+        }
+
+        /// <summary>
+        /// Metodo para renovar un token asincrono
+        /// </summary>
+        /// <param name="idUsuario"></param>
+        /// <returns></returns>
+        public Task<UsuarioResponse> RenovarTokenAsync(int idUsuario)
+        {
+            return Task.FromResult<UsuarioResponse>(RenovarToken(idUsuario));
+        }
+
+        /// <summary>
+        /// Metodo para registrar un usuario y dejarlo logueado asincrono.
+        /// </summary>
+        /// <param name="registrarUsuario">Recibe el usuario a registrar.</param>
+        /// <returns></returns>
+        public Task<UsuarioResponse> RegistrarUsuarioAsync(RegistrarUsuarioRequest usuario)
+        {
+            return Task.FromResult<UsuarioResponse>(RegistrarUsuario(usuario));
+        }
+
+        /// <summary>
+        /// Metodo para obtener un usuario y sus tareas asincrono.
+        /// </summary>
+        /// <param name="idUsuario"></param>
+        /// <returns></returns>
+        public Task<UsuarioListadoResponse> ObtenerUsuarioAsync(int idUsuario)
+        {
+            return Task.FromResult<UsuarioListadoResponse>(ObtenerUsuario(idUsuario));
         }
     }
 }
