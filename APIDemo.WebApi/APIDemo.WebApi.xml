@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>APIDemo.WebApi</name>
+    </assembly>
+    <members>
+        <member name="M:ApiDemo.WebApi.Controllers.AuthController.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Logging.ILogger{ApiDemo.WebApi.Controllers.AuthController},APIDemo.Domain.Model.UsuarioAggregate.IUsuarioService)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="clienteService">Inyectamos la dependencia pasada por el starup.</param>
+            <param name="logger">Inyectamos el logger.</param>
+        </member>
+        <member name="M:ApiDemo.WebApi.Controllers.AuthController.Login(APIDemo.Domain.Facade.UsuarioRequest)">
+            <summary>
+            Metodo para loguearse
+            </summary>
+            <param name="login"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiDemo.WebApi.Controllers.AuthController.Registrar(APIDemo.Domain.Facade.RegistrarUsuarioRequest)">
+            <summary>
+            Metodo para registrar un usuario
+            </summary>
+            <param name="registrarUsuarioRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiDemo.WebApi.Controllers.AuthController.Renovar">
+            <summary>
+            Metodo para realizar la renovacion del token en base al actual.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ApiDemo.WebApi.Controllers.AuthController.ListarUsuarios">
+            <summary>
+            Metodo para obtener el usuario segun id usuario.
+            </summary>
+            <param name="idUsuario"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiDemo.WebApi.Controllers.TareaController.AgregarTarea(APIDemo.Domain.Entity.Tarea)">
+            <summary>
+            Metodo para agregar una tarea.
+            </summary>
+            <param name="tarea"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiDemo.WebApi.Controllers.TareaController.EliminarTarea(System.Int32)">
+            <summary>
+            Metodo para eliminar una tarea.
+            </summary>
+            <param name="idTarea"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiDemo.WebApi.Controllers.TareaController.CambiarEstadoTarea(System.Int32,APIDemo.Domain.Entity.EnumEstadoTarea)">
+            <summary>
+            Metodo para modificar una tarea.
+            </summary>
+            <param name="idTarea"></param>
+            <param name="estadoTarea"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiDemo.WebApi.Controllers.TareaController.ListarTarea">
+            <summary>
+            Metodo para listar tareas.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ApiDemo.WebApi.Controllers.TareaController.ObtenerTarea(System.Int32)">
+            <summary>
+            Metodo para obtener una tarea segund id.
+            </summary>
+            <param name="idTarea"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ApiDemo.WebApi.Helpers.AppException">
+            <summary>
+            Metodo para manejar las excepciones de la app.
+            </summary>
+        </member>
+        <member name="M:ApiDemo.WebApi.Helpers.AppException.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:ApiDemo.WebApi.Helpers.AppException.#ctor(System.String)">
+            <summary>
+            Constructor SobreCarga +1
+            </summary>
+            <param name="message">Recibe el mensaje.</param>
+        </member>
+        <member name="M:ApiDemo.WebApi.Helpers.AppException.#ctor(System.String,System.Object[])">
+            <summary>
+            Constructor SobreCarga +2
+            </summary>
+            <param name="message">Recibe el mensaje.</param>
+        </member>
+        <member name="T:ApiDemo.WebApi.Program">
+            <summary>
+            Clase inicial y punto de entrada a la api, genera la configuracion inicial de donde obtener las configuraciones.
+            </summary>
+        </member>
+        <member name="M:ApiDemo.WebApi.Program.CreateWebHostBuilder(System.String[])">
+            <summary>
+            Generamos el Web Hostbuilder y especificamos en el host la configuracion del application insight la cual quedara registrada en Azure como logs.
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:GlobalErrorHandling.Models.ErrorDetails">
+            <summary>
+            Clase para manejar los detalles de errores del serilog.
+            </summary>
+        </member>
+        <member name="M:GlobalErrorHandling.Models.ErrorDetails.ToString">
+            <summary>
+            Sobre escritura metodo ToString
+            </summary>
+            <returns>Serializa el objeto y lo retorna</returns>
+        </member>
+        <member name="T:GlobalErrorHandling.Extensions.Trace">
+            <summary>
+            Recibe el trace para trabajar el Serilog.
+            </summary>
+        </member>
+        <member name="T:GlobalErrorHandling.Extensions.ExceptionMiddleware">
+            <summary>
+            Clase para trabajar las excepciones del middleware
+            </summary>
+        </member>
+        <member name="T:AuthorizeAttribute">
+            <summary>
+            Clase Atributo Autorizado.
+            </summary>
+        </member>
+        <member name="T:WebApi.Middleware.ErrorHandlerMiddleware">
+            <summary>
+            Clase para manejar los errores del middleware.
+            </summary>
+        </member>
+        <member name="T:WebApi.Middleware.JwtMiddleware">
+            <summary>
+            Middleware para la validacion del token antes de enviar el contexto completo a la api.
+            </summary>
+        </member>
+    </members>
+</doc>

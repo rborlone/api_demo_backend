@@ -14,6 +14,9 @@ using Microsoft.EntityFrameworkCore;
 using APIDemo.Domain.Model.UsuarioAggregate;
 using ApiDemo.Infra.Repository;
 using APIDemo.Domain.Model.TareaAggregate;
+using System.IO;
+using Microsoft.Extensions.PlatformAbstractions;
+using System.Reflection;
 
 namespace ApiDemo.WebApi
 {
@@ -54,7 +57,7 @@ namespace ApiDemo.WebApi
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "APIDemo.WebApi", Version = "v1" });
-
+                c.IncludeXmlComments(Path.Combine(PlatformServices.Default.Application.ApplicationBasePath, typeof(Startup).GetTypeInfo().Assembly.GetName().Name + ".xml"), true);
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     Name = "Authorization",
